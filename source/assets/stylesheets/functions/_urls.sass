@@ -1,0 +1,9 @@
+@function image-url($path)
+  @return url('/dist/images/#{$path}')
+
+@function font-url($path)
+  @return url('/dist/fonts/#{$path}')
+
+@each $function-name in image-url font-url
+  @if not function-exists($function-name)
+    @warn "Function #{$function-name}() missing, please see functions/_urls.sass for details!"

@@ -1,0 +1,7 @@
+// Generated automatically, do not edit manually!
+
+$icon-glyphs: (
+<% glyphs.forEach(function(glyph, index) {
+%>  <%= glyph.name %>: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>"<%= index < glyphs.length - 1 ? "," : "" %>
+<% }); %>);
+
