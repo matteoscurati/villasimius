@@ -5,9 +5,10 @@ html
     meta charset="utf-8"
     meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"
 
-    title = current_page.data.title || "Middleman"
+    title = current_page.data.title || "Villasimius project"
 
     = stylesheet_link_tag :application
   body class= page_classes
+    = partial "shared/menu"
     = yield
     = javascript_include_tag :application

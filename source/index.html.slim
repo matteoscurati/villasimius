@@ -1,7 +1,8 @@
----
-title: Welcome to Middleman
----
+- all_maps = dato.maps.sort_by(&:position)
+- first_map = all_maps[0]
+- second_map = all_maps[1]
 
-.wrap
-  .formatted-content
-    h1 Hello world
+= partial "partials/maps", locals: { map: first_map }
+= partial "partials/articles"
+= partial "partials/maps", locals: { map: second_map }
+

@@ -11,6 +11,20 @@ page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
+###
+# Dato configuration
+###
+
+activate :dato,
+  domain: 'twilight-hill-952.admin.datocms.com',
+  token: '34fa2fe352265e93f16eab9346740af0432c20c2fd8a27f561',
+  base_url: 'https://villasimius.netlify.com/'
+
+###
+# Dato items
+###
+
+
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
 

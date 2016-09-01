@@ -1,0 +1,48 @@
+.articles
+  display: flex
+  flex-direction: column
+  flex-wrap: nowrap
+  align-items: stretch
+  width: 100%
+
+.articles__body
+  display: flex
+  flex-direction: row
+  align-items: flex-end
+  align-content: flex-end
+  height: 100%
+
+.articles__body__inner
+  +padding(1)
+
+.articles__left
+  background-color: red
+  flex: 1
+  +vertical-margin(1)
+  +margin-right(0)
+
+.articles__right
+  flex: 1
+  +margin-top(0)
+  +margin-left(0)
+
+.articles__column
+  display: flex
+  flex-direction: column
+  flex-wrap: nowrap
+
+.articles__column__items
+  background-color: yellow
+  +margin-bottom(1)
+
++at-breakpoint(lap)
+
+  .articles
+    flex-direction: row
+
+  .articles__left
+    +margin-right(0.5)
+
+  .articles__right
+    +margin-left(0.5)
+    +margin-top(1)
