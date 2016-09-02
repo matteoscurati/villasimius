@@ -65,4 +65,8 @@ helpers do
   def markdown(text)
     Tilt['markdown'].new { text }.render(scope=self)
   end
+
+  def name(first_name, last_name)
+    "#{first_name} #{last_name}"
+  end
 end
