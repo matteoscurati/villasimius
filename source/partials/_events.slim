@@ -1,0 +1,22 @@
+- all_events = dato.events.select { |e| e.published == true}.sort_by(&:position)
+.wrap
+  .events
+    .formatted-content
+      h1
+        = all_events.count
+        |  events
+    - all_events.each do |event|
+      .events__item
+        .flag
+          .flag__image
+            .events__image style="background: url('#{event.image.file.to_url}&h=150') center center no-repeat; background-size: cover;"
+          .flag__body
+            .events__meta
+              = event.when.strftime("%d %B %Y")
+              |  - 
+              = event.when.strftime("%H:%M")
+            .events__heading
+              h2 = event.name
+            .events__content
+              .formatted-content
+                = event.short_description

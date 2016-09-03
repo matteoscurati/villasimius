@@ -1,54 +1,25 @@
-- all_articles = dato.articles.sort_by(&:position)
-- first = all_articles[0]
-- second = all_articles[1]
-- third = all_articles[2]
-- rest = all_articles[3..-1]
+- all_articles = dato.articles.select { |art| art.published == true}.sort_by(&:position)
 .wrap
   .articles
-    .articles__left style="background: url('#{first.cover_image.file.to_url}&bri=-20&w=450') center center no-repeat; background-size: cover;"
+    .formatted-content
+      h1
+        = all_articles.count
+        |  articles
+    - all_articles.each do |article|
+      .articles__item
+        .grid
+          .grid__item.width-12-12.tab-4-12
+            .article__image style="background: url('#{article.cover_image.file.to_url}&h=400') center center no-repeat; background-size: cover;"
 
-      .articles__body
-        .articles__body__inner
-          .articles__meta
-            =  first.publication_date
-          .articles__heading
-            h1 = first.title
-            .articles__heading__subtitle
-              h2 = first.subtitle
-          .articles__author
-            | di 
-            = name(first.author.first_name, first.author.last_name)
-          .articles__content
-            p = truncate_words(Sanitize.fragment(first.content), length: 100)
-    .articles__right
-      .articles__column
-        .articles__column__items style="background: url('#{second.cover_image.file.to_url}&bri=-20&w=450') center center no-repeat; background-size: cover;"
-
-          .articles__body
-            .articles__body__inner
-              .articles__meta
-                =  second.publication_date
-              .articles__heading
-                h1 = second.title
-                .articles__heading__subtitle
-                  h2 = second.subtitle
-              .articles__author
-                | di 
-                = name(second.author.first_name, second.author.last_name)
-              .articles__content
-                p = truncate_words(Sanitize.fragment(second.content), length: 50)
-        .articles__column__items style="background: url('#{third.cover_image.file.to_url}&bri=-20&w=450') center center no-repeat; background-size: cover;"
-
-          .articles__body
-            .articles__body__inner
-              .articles__meta
-                =  third.publication_date
-              .articles__heading
-                h1 = third.title
-                .articles__heading__subtitle
-                  h2 = third.subtitle
-              .articles__author
-                | di 
-                = name(third.author.first_name, third.author.last_name)
-              .articles__content
-                p = truncate_words(Sanitize.fragment(third.content), length: 50)
+          .grid__item.width-12-12.tab-8-12
+            .articles__item__heading
+              .articles__subtitle = article.subtitle
+              .articles__title = article.title
+            .articles__item__meta
+              | di 
+              = name(article.author.first_name, article.author.last_name)
+              |  - 
+              = article.publication_date.strftime("%d/%m/%Y")
+            .articles__item__content
+              .formatted-content
+                p = truncate_words(Sanitize.fragment(article.content), length: 250)
