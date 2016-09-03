@@ -6,10 +6,10 @@
       h1 Papers
     .grid
       - papers.each do |paper|
-        = link_to paper.pdf.path do
+        = link_to paper.pdf.file.to_url do
           .grid__item.width-12-12.lap-4-12
             .papers__item
-              .papers__image style="background: url('#{paper.image.file.to_url}&h=400') center center no-repeat; background-size: cover;"
+              .papers__image style="background: url('#{paper.pdf.file.to_url}&page=1&fm=pjpg') center center no-repeat; background-size: cover;"
               .papers__heading
                 = paper.title
               .papers__content
